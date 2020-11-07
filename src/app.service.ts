@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
-
+import axios from 'axios';
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
-  sayBye(): string {
-    return 'Goodbye!';
+  async getHello(): Promise<string> {
+    const res = await axios.get('https://ipapi.co/json');
+    return res.data;
   }
 }
